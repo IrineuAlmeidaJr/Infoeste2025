@@ -1,4 +1,4 @@
-﻿using Application.DTOs;
+﻿using Application.DTOs.Abstractions;
 using Application.DTOs.Category;
 
 namespace Application.Services;

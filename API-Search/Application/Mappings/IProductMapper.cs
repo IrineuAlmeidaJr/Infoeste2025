@@ -1,5 +1,5 @@
 ﻿using Application.DTO.Product;
-using Application.DTOs;
+using Application.DTOs.Abstractions;
 using Application.DTOs.Product;
 using Domain.Abstractions;
 using Domain.Entities;

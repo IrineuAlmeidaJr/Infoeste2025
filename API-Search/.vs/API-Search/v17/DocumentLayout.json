@@ -3,16 +3,52 @@
   "WorkspaceRootPath": "C:\\Github\\Infoeste2025\\API-Search\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|c:\\github\\infoeste2025\\api-search\\application\\dtos\\product\\productquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|solutionrelative:application\\dtos\\product\\productquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|c:\\github\\infoeste2025\\api-search\\application\\dtos\\product\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|solutionrelative:application\\dtos\\product\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|c:\\github\\infoeste2025\\api-search\\application\\dtos\\abstractions\\queryoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|solutionrelative:application\\dtos\\abstractions\\queryoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|c:\\github\\infoeste2025\\api-search\\application\\dtos\\abstractions\\pagedresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFF3ED60-5598-4ED6-97F5-7BDDF03D4C40}|Application\\Application.csproj|solutionrelative:application\\dtos\\abstractions\\pagedresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\repository\\elastic\\elasticproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\elastic\\elasticproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\repository\\elastic\\elasticcampaign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\elastic\\elasticcampaign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\repository\\elastic\\ielasticproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\elastic\\ielasticproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\configurations\\exceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configurations\\exceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\repository\\campaignrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\campaignrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F6B0BC-F18F-49A3-9950-155E648E77B8}|Domain\\Domain.csproj|c:\\github\\infoeste2025\\api-search\\domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F6B0BC-F18F-49A3-9950-155E648E77B8}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|c:\\github\\infoeste2025\\api-search\\infrastructure\\configurations\\exceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{83561681-990A-454A-87CD-950E8C0F3AFB}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configurations\\exceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E204F04-DDCA-4155-ACC5-FC605247691E}|API-Search\\API-Search.csproj|c:\\github\\infoeste2025\\api-search\\api-search\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -51,118 +87,131 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Repository\\ProductRepository.cs",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\ProductRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Repository\\ProductRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Title": "ProductQuery.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Product\\ProductQuery.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Product\\ProductQuery.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Product\\ProductQuery.cs*",
+              "RelativeToolTip": "Application\\DTOs\\Product\\ProductQuery.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T02:13:04.704Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExceptionHandler.cs",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Configurations\\ExceptionHandler.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\ExceptionHandler.cs",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Configurations\\ExceptionHandler.cs",
-              "RelativeToolTip": "Infrastructure\\Configurations\\ExceptionHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T02:12:22.914Z",
+              "WhenOpened": "2025-10-22T17:38:15.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\appsettings.json",
-              "RelativeDocumentMoniker": "API-Search\\appsettings.json",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\appsettings.json",
-              "RelativeToolTip": "API-Search\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-22T02:12:00.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "API-Search",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.csproj",
-              "RelativeDocumentMoniker": "API-Search\\API-Search.csproj",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.csproj",
-              "RelativeToolTip": "API-Search\\API-Search.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T02:06:03.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Application",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\Application.csproj",
-              "RelativeDocumentMoniker": "Application\\Application.csproj",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\Application.csproj",
-              "RelativeToolTip": "Application\\Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T02:05:38.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Incoming",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Incoming\\Incoming.csproj",
-              "RelativeDocumentMoniker": "Incoming\\Incoming.csproj",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Incoming\\Incoming.csproj",
-              "RelativeToolTip": "Incoming\\Incoming.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T02:04:48.86Z",
+              "Title": "PagedResultDto.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Abstractions\\PagedResultDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Abstractions\\PagedResultDto.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Abstractions\\PagedResultDto.cs*",
+              "RelativeToolTip": "Application\\DTOs\\Abstractions\\PagedResultDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T17:34:00.963Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Infrastructure",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Infrastructure.csproj",
-              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Infrastructure.csproj",
-              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T02:03:37.396Z",
+              "Title": "QueryOptions.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Abstractions\\QueryOptions.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Abstractions\\QueryOptions.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Abstractions\\QueryOptions.cs",
+              "RelativeToolTip": "Application\\DTOs\\Abstractions\\QueryOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T17:31:22.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Product.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "Domain\\Entities\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T17:22:02.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Product\\ProductDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Product\\ProductDto.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\DTOs\\Product\\ProductDto.cs*",
+              "RelativeToolTip": "Application\\DTOs\\Product\\ProductDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T17:12:48.633Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Domain",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Domain.csproj",
-              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Domain.csproj",
-              "RelativeToolTip": "Domain\\Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T01:57:54.876Z",
+              "Title": "ElasticCampaign.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\ElasticCampaign.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\Elastic\\ElasticCampaign.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\ElasticCampaign.cs",
+              "RelativeToolTip": "Infrastructure\\Repository\\Elastic\\ElasticCampaign.cs",
+              "ViewState": "AgIAACsBAAAAAAAAAAAvwEUBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T13:19:45.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IElasticProduct.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\IElasticProduct.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\Elastic\\IElasticProduct.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\IElasticProduct.cs",
+              "RelativeToolTip": "Infrastructure\\Repository\\Elastic\\IElasticProduct.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T13:16:12.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ElasticProduct.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\ElasticProduct.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\Elastic\\ElasticProduct.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\Elastic\\ElasticProduct.cs*",
+              "RelativeToolTip": "Infrastructure\\Repository\\Elastic\\ElasticProduct.cs*",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAowF0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T13:16:01.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\Program.cs",
-              "RelativeDocumentMoniker": "API-Search\\Program.cs",
-              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\Program.cs",
-              "RelativeToolTip": "API-Search\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAASAAAAAAAAAA==",
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\ProductRepository.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\ProductRepository.cs*",
+              "RelativeToolTip": "Infrastructure\\Repository\\ProductRepository.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T01:53:54.249Z",
+              "WhenOpened": "2025-10-22T13:12:47.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CampaignRepository.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\CampaignRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\CampaignRepository.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Repository\\CampaignRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repository\\CampaignRepository.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAswBcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T13:11:52.877Z",
               "EditorCaption": ""
             },
             {
@@ -176,6 +225,107 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\appsettings.json",
+              "RelativeDocumentMoniker": "API-Search\\appsettings.json",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\appsettings.json",
+              "RelativeToolTip": "API-Search\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-22T02:12:00.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "API-Search.csproj",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.csproj",
+              "RelativeDocumentMoniker": "API-Search\\API-Search.csproj",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.csproj",
+              "RelativeToolTip": "API-Search\\API-Search.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T02:06:03.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Application.csproj",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Application\\Application.csproj",
+              "RelativeDocumentMoniker": "Application\\Application.csproj",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Application\\Application.csproj*",
+              "RelativeToolTip": "Application\\Application.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T02:05:38.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Infrastructure.csproj",
+              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T02:03:37.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ExceptionHandler.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Configurations\\ExceptionHandler.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\ExceptionHandler.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Infrastructure\\Configurations\\ExceptionHandler.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\ExceptionHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T02:12:22.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Incoming.csproj",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Incoming\\Incoming.csproj",
+              "RelativeDocumentMoniker": "Incoming\\Incoming.csproj",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Incoming\\Incoming.csproj",
+              "RelativeToolTip": "Incoming\\Incoming.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T02:04:48.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\Domain\\Domain.csproj*",
+              "RelativeToolTip": "Domain\\Domain.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T01:57:54.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\Program.cs",
+              "RelativeDocumentMoniker": "API-Search\\Program.cs",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\Program.cs",
+              "RelativeToolTip": "API-Search\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T01:53:54.249Z"
             }
           ]
         },

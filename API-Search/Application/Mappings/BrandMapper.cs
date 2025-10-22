@@ -1,4 +1,4 @@
-﻿using Application.DTOs;
+﻿using Application.DTOs.Abstractions;
 using Application.DTOs.Brand;
 using Domain.Abstractions;
 using Domain.Entities;

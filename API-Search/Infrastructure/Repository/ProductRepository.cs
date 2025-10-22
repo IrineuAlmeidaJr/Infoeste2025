@@ -1,65 +1,37 @@
-﻿using Domain.Abstractions;
+﻿using Application.DTOs.Product;
+using Domain.Abstractions;
 using Domain.Entities;
 using Domain.Repository;
+using Infrastructure.Repository.Elastic;
 
 namespace Infrastructure.Repository;
 
-public class ProductRepository(ApplicationDbContext context) : IProductRepository
+public class ProductRepository(
+    IElasticProduct elasticProduct) : IProductRepository
 {
-    public async Task<Product> Create(Product product)
+    public async Task Create(Product product)
     {
-        context.Add(product);
-        await context.SaveChangesAsync();
-
-        return product;
+        await elasticProduct.Create(product);
     }
 
-    public async Task<Product> Update(Product product)
+    public async Task Update(Product product)
     {
-        context.Update(product);
-        await context.SaveChangesAsync();
-
-        return product;
-    }
-
-    public async Task<Product?> Remove(long id)
-    {
-        var stored = await GetById(id);
-        if (stored == null)
-            return null;
-
-        context.Products.Remove(stored);
-        await context.SaveChangesAsync();
-        return stored;
+        await elasticProduct.Update(product);
     }
 
     public async Task<Product?> GetById(long id)
     {
-        var stored = await context.Products
-            .Include(p => p.Brand)
-            .Include(p => p.Categories)
-            .FirstOrDefaultAsync(p => p.Id == id);
-
-        return stored ?? null;
+        return await elasticProduct.GetProductByProductId(id);
     }
 
-    public async Task<PagedResult<Product>> GetProductsPaged(string? name, int page, int pageSize)
+    public async Task<PagedResult<Product>> GetProductsPaged(QueryOptions queryOptions)
     {
-        var query = context.Products.AsQueryable();
+        var query = queryOptions as ProductQueryDto
+            ?? throw new ArgumentException("Parâmetros de consulta inválidos.");
 
-        if (!string.IsNullOrWhiteSpace(name))
-            query = query.Where(product => EF.Functions.Like(product.Name, $"%{name}%"));
+        var response = await elasticProduct.SearchCampaignsAsync(query);
+        var pagedResult = new PagedResult<Product>(response.Documents, response.Total, query.Page, query.PageSize);
 
-        var totalItems = await query.CountAsync();
-
-        var items = await query
-            .Include(p => p.Brand)
-            .Include(p => p.Categories)
-            .OrderBy(b => b.Name)
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .ToListAsync();
-
-        return new PagedResult<Product>(items, totalItems, page, pageSize);
+        return pagedResult;
     }
 }

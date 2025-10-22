@@ -1,18 +1,19 @@
-﻿using Application.DTOs.Category;
-
-namespace Application.DTO.Product;
+﻿namespace Application.DTO.Product;
 
 public class ProductResponseDto
 {
-    public long Id { get; set; }
+    public Guid Id { get; set; }
+    public long ProductId { get; set; }
     public required string Name { get; set; }
-    public required string Description { get; set; }
+    public string? Description { get; set; }
     public required string Ean { get; set; }
     public required string Sku { get; set; }
-    public int Stock { get; set; }
+    public bool InStock { get; set; }
     public decimal BasePrice { get; set; }
-    public required string ImageUrl { get; set; }
-
-    public required string BrandName { get; set; } 
-    public IEnumerable<CategoryDto>? Categories { get; set; } 
+    public decimal SalePrice { get; set; }
+    public bool IsOnSale { get; set; }
+    public DateTime OnSaleEnd { get; set; }
+    public string? ImageUrl { get; set; }
+    public required string Brand { get; set; }
+    public ICollection<string> Categories { get; set; } = new List<string>();
 }

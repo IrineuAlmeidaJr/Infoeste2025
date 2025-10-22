@@ -1,6 +1,6 @@
 ﻿using Application.DTO;
 using Application.DTO.Product;
-using Application.DTOs;
+using Application.DTOs.Abstractions;
 using Application.DTOs.Product;
 using Application.Mapper;
 using Domain.Entities;
