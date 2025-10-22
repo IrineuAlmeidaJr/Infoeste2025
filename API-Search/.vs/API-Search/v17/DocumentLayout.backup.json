@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Github\\Infoeste2025\\API-Search\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5E204F04-DDCA-4155-ACC5-FC605247691E}|API-Search\\API-Search.csproj|c:\\github\\infoeste2025\\api-search\\api-search\\api-search.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{5E204F04-DDCA-4155-ACC5-FC605247691E}|API-Search\\API-Search.csproj|solutionrelative:api-search\\api-search.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "API-Search.http",
+              "DocumentMoniker": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.http",
+              "RelativeDocumentMoniker": "API-Search\\API-Search.http",
+              "ToolTip": "C:\\Github\\Infoeste2025\\API-Search\\API-Search\\API-Search.http",
+              "RelativeToolTip": "API-Search\\API-Search.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-10-22T01:53:50.373Z",
+              "EditorCaption": ""
             }
           ]
         },
