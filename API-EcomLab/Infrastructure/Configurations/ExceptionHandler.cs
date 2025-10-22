@@ -1,0 +1,114 @@
+﻿using System.Net;
+using System.Text.Json;
+using Domain.Exception;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using MySqlConnector;
+
+namespace Infrastructure.Configurations;
+
+public class ExceptionHandler
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionHandler> _logger;
+
+    public ExceptionHandler(RequestDelegate next, ILogger<ExceptionHandler> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await _next(context);
+        }
+        catch (DomainException ex)
+        {
+            await HandleExceptionAsync(context, ex);
+        }
+        catch (DbUpdateException ex) when (ex.InnerException is MySqlException mysqlEx)
+        {
+            await HandleExceptionAsync(context, mysqlEx);
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(context, ex);
+        }
+    }
+
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    {
+        _logger.LogError(exception, "Unhandled exception caught by ExceptionHandler");
+
+        var statusCode = HttpStatusCode.InternalServerError;
+        var problemDetails = new ProblemDetails
+        {
+            Status = (int)statusCode,
+            Title = "Ocorreu um erro inesperado!",
+            Detail = "Não foi possível processar sua requisição no momento. Por favor, tente novamente ou contate o suporte.",
+            Instance = context.Request.Path
+        };
+
+        context.Response.ContentType = "application/problem+json";
+        context.Response.StatusCode = (int)statusCode;
+        var result = JsonSerializer.Serialize(problemDetails);
+        return context.Response.WriteAsync(result);
+    }
+
+    private Task HandleExceptionAsync(HttpContext context, DomainException exception)
+    {
+        _logger.LogError(exception, "Domain exception caught by ExceptionHandler");
+
+        var statusCode = exception.StatusCode;
+        var problemDetails = new ProblemDetails
+        {
+            Status = (int)statusCode,
+            Title = exception.Title,
+            Detail = exception.Description,
+            Instance = context.Request.Path
+        };
+
+        context.Response.ContentType = "application/problem+json";
+        context.Response.StatusCode = (int)statusCode;
+        var result = JsonSerializer.Serialize(problemDetails);
+        return context.Response.WriteAsync(result);
+    }
+
+    private Task HandleExceptionAsync(HttpContext context, MySqlException mysqlEx)
+    {
+        var problemDetails = new ProblemDetails();
+
+        switch (mysqlEx.Number)
+        {
+            case 1062:
+                problemDetails.Status = (int)HttpStatusCode.Conflict;
+                problemDetails.Title = "Conflito de dados";
+                problemDetails.Detail = "Valor já existe para um campo único";
+                break;
+
+            case 1451: 
+            case 1452:
+                problemDetails.Status = (int)HttpStatusCode.BadRequest;
+                problemDetails.Title = "Operação inválida";
+                problemDetails.Detail = "Violação de integridade referencial";
+                break;
+
+            default:
+                problemDetails.Status = (int)HttpStatusCode.InternalServerError;
+                problemDetails.Title = "Operação inválida";
+                problemDetails.Detail = "Erro inesperado no banco de dados.";
+                break;
+        }
+
+        _logger.LogError(mysqlEx, "MySQL exception caught by ExceptionHandler");
+
+        problemDetails.Instance = context.Request.Path;
+        context.Response.ContentType = "application/problem+json";
+        var result = JsonSerializer.Serialize(problemDetails);
+        return context.Response.WriteAsync(result);
+    }
+}
