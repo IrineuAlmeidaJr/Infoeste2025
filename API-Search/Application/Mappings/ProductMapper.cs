@@ -1,56 +1,56 @@
-﻿using Application.DTO.Product;
-using Application.DTOs.Abstractions;
-using Application.DTOs.Product;
-using Domain.Abstractions;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Domain.Event;
 
 namespace Application.Mapper;
 
-public class ProductMapper(ICategoryMapper categoryMapper) : IProductMapper
+public class ProductMapper : IProductMapper
 {
-    public Product FromProductCreateDto(ProductCreateDto request, Brand brand, IEnumerable<Category>? categories = null)
+    public Product FromKafkaProductEvent(KafkaEvent<Product> productEvent)
     {
-        var product = new Product(
-            request.Name,
-            request.Description,
-            request.Ean,
-            request.Sku,
-            request.Stock,
-            request.BasePrice,
-            request.ImageUrl
-        );
+        var product = productEvent.Data;
 
-        product.BrandId = brand.Id;
-        product.Brand = brand;
-
-        if (categories != null)
+        return new Product()
         {
-            product.Categories = categories.ToList();
-        }
-
-        return product;
+            Id = product.Id,
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Description = product.Description,
+            Ean = product.Ean,
+            Sku = product.Sku,
+            InStock = product.InStock,
+            BasePrice = product.BasePrice,
+            SalePrice = product.SalePrice,
+            IsOnSale = product.IsOnSale,
+            OnSaleEnd = product.OnSaleEnd,
+            CreatedAt = product.CreatedAt,
+            UpdatedAt = product.UpdatedAt,
+            ImageUrl = product.ImageUrl,
+            Brand = product.Brand,
+            Categories = product.Categories,
+            IsActive = product.IsActive
+        };
     }
 
-    public ProductResponseDto ToProductResponseDto(Product product) => new ProductResponseDto()
-    {
-        Id = product.Id,
-        Name = product.Name,
-        Description = product.Description,
-        Ean = product.Ean,
-        Sku = product.Sku,
-        Stock = product.Stock,
-        BasePrice = product.BasePrice,
-        ImageUrl = product.ImageUrl,
-        BrandName = product.Brand.Name,
-        Categories = categoryMapper.ToCategoryDtoList(product.Categories)
-    };
+    //public ProductResponseDto ToProductResponseDto(Product product) => new ProductResponseDto()
+    //{
+    //    Id = product.Id,
+    //    Name = product.Name,
+    //    Description = product.Description,
+    //    Ean = product.Ean,
+    //    Sku = product.Sku,
+    //    Stock = product.Stock,
+    //    BasePrice = product.BasePrice,
+    //    ImageUrl = product.ImageUrl,
+    //    BrandName = product.Brand.Name,
+    //    Categories = categoryMapper.ToCategoryDtoList(product.Categories)
+    //};
 
-    public PagedResultDto<ProductResponseDto> ToPagedResultDto(PagedResult<Product> pagedResult) => new PagedResultDto<ProductResponseDto>()
-    {
-        Items = pagedResult.Items.Select(ToProductResponseDto).ToList(),
-        TotalItems = pagedResult.TotalItems,
-        PageNumber = pagedResult.PageNumber,
-        PageSize = pagedResult.PageSize,
-        TotalPages = pagedResult.TotalPages
-    };
+    //public PagedResultDto<ProductResponseDto> ToPagedResultDto(PagedResult<Product> pagedResult) => new PagedResultDto<ProductResponseDto>()
+    //{
+    //    Items = pagedResult.Items.Select(ToProductResponseDto).ToList(),
+    //    TotalItems = pagedResult.TotalItems,
+    //    PageNumber = pagedResult.PageNumber,
+    //    PageSize = pagedResult.PageSize,
+    //    TotalPages = pagedResult.TotalPages
+    //};
 }

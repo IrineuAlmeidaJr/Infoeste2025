@@ -16,7 +16,6 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Incoming\Incoming.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Outgoing\Outgoing.csproj" />
   </ItemGroup>
 	
 </Project>

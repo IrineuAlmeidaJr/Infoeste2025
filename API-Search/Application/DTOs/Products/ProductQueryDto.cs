@@ -1,8 +1,8 @@
-﻿using Application.DTOs.Abstractions;
+﻿using Domain.Abstractions;
 
-namespace Application.DTOs.Product;
+namespace Application.DTOs.Products;
 
-public class ProductQueryDto : QueryOptionsDto
+public class ProductQueryDto : QueryOptions
 {
     public string? Name { get; set; }
     public bool? IsOnSale { get; set; }

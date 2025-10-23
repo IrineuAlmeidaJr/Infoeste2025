@@ -1,4 +1,4 @@
-﻿namespace Application.DTO.Product;
+﻿namespace Application.DTO.Products;
 
 public class ProductResponseDto
 {

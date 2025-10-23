@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Product;
+﻿using Application.DTOs.Products;
 using Domain.Entities;
 using Domain.Enums;
 using Infrastructure.Configuration.Elastic;
@@ -64,7 +64,7 @@ public class ElasticProduct(
                 .Index(IndexName)
                 .Query(query => query
                     .Term(term => term
-                        .Field(field => field.Id)
+                        .Field(field => field.ProductId)
                         .Value(productId)
                     )
                 )

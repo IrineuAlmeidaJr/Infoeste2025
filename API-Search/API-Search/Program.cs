@@ -1,4 +1,15 @@
+using Application.Mapper;
+using Application.Services;
+using Domain.Repository;
+using Incoming.Messaging;
+using Infrastructure.Configuration.Elastic;
+using Infrastructure.Configuration.Kafka;
 using Infrastructure.Configurations;
+using Infrastructure.Configurations.Redis;
+using Infrastructure.Repository;
+using Infrastructure.Repository.Elastic;
+using Infrastructure.Repository.Redis;
+using Nest;
 using Serilog;
 
 public class Program
@@ -14,7 +25,6 @@ public class Program
         RegistryDomainServices(builder);
         RegistryApplicationServices(builder);
         RegistryIncomingServices(builder);
-        RegistryOutgoingServices(builder);
 
         builder.Services.AddControllers();
         builder.Services.AddHttpClient();
@@ -42,18 +52,18 @@ public class Program
 
     private static void ExecuteInitializationServices(WebApplication app)
     {
-        //app.Services.GetRequiredService<IElasticContext>();
-        //app.Services.GetRequiredService<IRedisContext>();
-        //app.Services.GetRequiredService<IKafkaContext>();
+        app.Services.GetRequiredService<IElasticContext>();
+        app.Services.GetRequiredService<IRedisContext>();
+        app.Services.GetRequiredService<IKafkaContext>();
     }
 
     private static void RegistryApplicationServices(WebApplicationBuilder builder)
     {
         // mappers
-        //builder.Services.AddSingleton<ICategoryMapper, CategoryMapper>();
+        builder.Services.AddSingleton<IProductMapper, ProductMapper>();
 
         // services
-        //builder.Services.AddScoped<ICategoryService, CategoryService>();
+        builder.Services.AddSingleton<IProductService, ProductService>();
 
         // use cases
         // - campaign
@@ -66,24 +76,22 @@ public class Program
 
     private static void RegistryIncomingServices(WebApplicationBuilder builder)
     {
-        //builder.Services.AddHostedService<CampaignStatusAdjustmentKafkaListener>();
-        //builder.Services.AddHostedService<PacingBalanceInsufficientKafkaListener>();
+        builder.Services.AddHostedService<ProductKafkaListener>();
     }
 
     private static void RegistryInfrastructureServices(WebApplicationBuilder builder)
     {
         // Configuration contexts
-        //builder.Services.AddSingleton<IElasticContext, ElasticContext>();
-        //builder.Services.AddSingleton<IElasticClient, ElasticClient>();
-        //builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
+        builder.Services.AddSingleton<IElasticContext, ElasticContext>();
+        builder.Services.AddSingleton<IElasticClient, ElasticClient>();
+        builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
+        builder.Services.AddSingleton<IRedisContext, RedisContext>();
 
 
         // Repositories  
-        //builder.Services.AddSingleton<IElasticCampaign, ElasticCampaign>();
-    }
-    private static void RegistryOutgoingServices(WebApplicationBuilder builder)
-    {
-        // Messaging  
-        //builder.Services.AddSingleton<ICampaignStatusAdjustmentEventPublisher, CampaignStatusAdjustmentKafkaPublisher>();
+        builder.Services.AddSingleton<IRedisRepository, RedisRepository>();
+        builder.Services.AddSingleton<ICacheRepository, CacheRepository>();
+        builder.Services.AddSingleton<IElasticProduct, ElasticProduct>();
+        builder.Services.AddSingleton<IProductRepository, ProductRepository>();
     }
 }

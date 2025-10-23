@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Product;
+﻿using Application.DTOs.Products;
 using Domain.Entities;
 using Nest;
 
