@@ -1,6 +1,7 @@
 using Application.Mapper;
 using Application.Services;
 using Domain.Repository;
+using Infrastructure.Configuration.Kafka;
 using Infrastructure.Configurations;
 using Infrastructure.Configurations.Redis;
 using Infrastructure.Context;
@@ -50,9 +51,8 @@ public class Program
 
     private static void ExecuteInitializationServices(WebApplication app)
     {
-        //app.Services.GetRequiredService<IElasticContext>();
         app.Services.GetRequiredService<IRedisContext>();
-        //app.Services.GetRequiredService<IKafkaContext>();
+        app.Services.GetRequiredService<IKafkaContext>();
     }
 
     private static void RegistryApplicationServices(WebApplicationBuilder builder)
@@ -68,8 +68,6 @@ public class Program
         builder.Services.AddScoped<IProductService, ProductService>();
 
         // use cases
-        // - campaign
-        //builder.Services.AddSingleton<ISearchCampaign, SearchCampaign>();
     }
 
     private static void RegistryDomainServices(WebApplicationBuilder builder)
@@ -78,8 +76,7 @@ public class Program
 
     private static void RegistryIncomingServices(WebApplicationBuilder builder)
     {
-        //builder.Services.AddHostedService<CampaignStatusAdjustmentKafkaListener>();
-        //builder.Services.AddHostedService<PacingBalanceInsufficientKafkaListener>();
+
     }
 
     private static void RegistryInfrastructureServices(WebApplicationBuilder builder)
@@ -91,13 +88,9 @@ public class Program
             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 42))));
         builder.Services.AddSingleton<IRedisContext, RedisContext>();
 
-        //builder.Services.AddSingleton<IElasticContext, ElasticContext>();
-        //builder.Services.AddSingleton<IElasticClient, ElasticClient>();
-        //builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
-
+        builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
 
         // Repositories  
-        //builder.Services.AddSingleton<IElasticCampaign, ElasticCampaign>();
         builder.Services.AddSingleton<ICacheRepository, CacheRepository>();
         builder.Services.AddSingleton<IRedisRepository, RedisRepository>();
         builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -107,6 +100,6 @@ public class Program
     private static void RegistryOutgoingServices(WebApplicationBuilder builder)
     {
         // Messaging  
-        //builder.Services.AddSingleton<ICampaignStatusAdjustmentEventPublisher, CampaignStatusAdjustmentKafkaPublisher>();
+
     }
 }

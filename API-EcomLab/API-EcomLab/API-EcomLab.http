@@ -1,6 +1,0 @@
-@API_EcomLab_HostAddress = http://localhost:5102
-
-GET {{API_EcomLab_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
