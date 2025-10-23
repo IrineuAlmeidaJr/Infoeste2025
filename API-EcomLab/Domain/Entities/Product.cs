@@ -11,7 +11,7 @@ public sealed class Product : Entity<long>
     public int Stock { get; private set; }
     public decimal BasePrice { get; private set; }
     public string? ImageUrl { get; private set; }
-
+    public bool IsActive { get; set; }
 
     public long BrandId { get; set; }
     public Brand Brand { get; set; }
@@ -43,6 +43,12 @@ public sealed class Product : Entity<long>
     public void Update(string name, string description, string ean, string sku, int stock, decimal basePrice, string imageUrl)
     {
         ValidateDomain(name, description, ean, sku, stock, basePrice, imageUrl);
+        base.UpdateTimestamps();
+    }
+
+    public void SetProductStatus(bool isActive)
+    {
+        IsActive = isActive;
         base.UpdateTimestamps();
     }
 
@@ -101,5 +107,6 @@ public sealed class Product : Entity<long>
         Stock = stock;
         BasePrice = basePrice;
         ImageUrl = imageUrl;
+        IsActive = true;
     }
 }

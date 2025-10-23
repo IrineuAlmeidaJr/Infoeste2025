@@ -55,11 +55,15 @@ public class ProductService(
         return mapper.ToProductResponseDto(updatedProduct);
     }
 
-    public async Task Remove(long id)
+    public async Task SetProductStatus(long id, bool isActive)
     {
-        var removedProduct = await productRepository.Remove(id);
-        if (removedProduct == null)
-            throw new NotFoundException("Produto não foi encontrado e não pôde ser removido");
+        var product = await productRepository.GetById(id);
+        if (product == null)
+            throw new NotFoundException("Produto não foi encontrado e não pôde ser atualizado");
+
+        product.SetProductStatus(isActive);
+
+        await productRepository.Update(product);
     }
 
     public async Task<ProductResponseDto> GetById(long id)
