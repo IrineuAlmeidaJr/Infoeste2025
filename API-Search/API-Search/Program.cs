@@ -64,10 +64,6 @@ public class Program
 
         // services
         builder.Services.AddSingleton<IProductService, ProductService>();
-
-        // use cases
-        // - campaign
-        //builder.Services.AddSingleton<ISearchCampaign, SearchCampaign>();
     }
 
     private static void RegistryDomainServices(WebApplicationBuilder builder)

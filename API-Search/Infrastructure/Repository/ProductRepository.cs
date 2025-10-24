@@ -19,9 +19,9 @@ public class ProductRepository(
         await elasticProduct.Update(product);
     }
 
-    public async Task<Product?> GetById(long id)
+    public async Task<Product?> GetById(Guid id)
     {
-        return await elasticProduct.GetProductByProductId(id);
+        return await elasticProduct.GetProductById(id);
     }
 
     public async Task<PagedResult<Product>> GetProductsPaged(QueryOptions queryOptions)
@@ -30,8 +30,9 @@ public class ProductRepository(
             ?? throw new ArgumentException("Parâmetros de consulta inválidos.");
 
         var response = await elasticProduct.SearchCampaignsAsync(query);
-        var pagedResult = new PagedResult<Product>(response.Documents, response.Total, query.Page, query.PageSize);
-
-        return pagedResult;
+        if (response == null)
+            return new PagedResult<Product>();
+            
+        return new PagedResult<Product>(response.Documents, response.Total, query.Page, query.PageSize); 
     }
 }

@@ -8,6 +8,8 @@ public class PagedResult<T>
     public int PageSize { get; set; }
     public int TotalPages { get; set; }
 
+    public PagedResult() { }
+
     public PagedResult(IEnumerable<T> items, long totalItems, int pageNumber, int pageSize)
     {
         Items = items;
