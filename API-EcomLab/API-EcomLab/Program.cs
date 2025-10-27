@@ -1,5 +1,7 @@
 using Application.Mapper;
 using Application.Services;
+using Application.UseCases.Brands;
+using Application.UseCases.Categories;
 using Domain.Repository;
 using Infrastructure.Configurations;
 using Infrastructure.Configurations.Redis;
@@ -67,9 +69,23 @@ public class Program
         builder.Services.AddScoped<IBrandService, BrandService>();
         builder.Services.AddScoped<IProductService, ProductService>();
 
-        // use cases
-        // - campaign
-        //builder.Services.AddSingleton<ISearchCampaign, SearchCampaign>();
+        // UseCases
+        // - Brand
+        builder.Services.AddScoped<ICreateBrand, CreateBrand>();
+        builder.Services.AddScoped<IUpdateBrand, UpdateBrand>();
+        builder.Services.AddScoped<IRemoveBrand, RemoveBrand>();
+        builder.Services.AddScoped<IGetBrandDtoById, GetBrandDtoById>();
+        builder.Services.AddScoped<IGetBrandById, GetBrandById>();        
+        builder.Services.AddScoped<IGetBrandsPaged, GetBrandsPaged>();
+        // - Category
+        builder.Services.AddScoped<ICreateCategory, CreateCategory>();
+        builder.Services.AddScoped<IUpdateCategory, UpdateCategory>();
+        builder.Services.AddScoped<IRemoveCategory, RemoveCategory>();
+        builder.Services.AddScoped<IGetCategoryDtoById, GetCategoryDtoById>();
+        builder.Services.AddScoped<IGetCategoryById, GetCategoryById>();
+        builder.Services.AddScoped<IGetCategoriesPaged, GetCategoriesPaged>();
+        // - Product
+        builder.Services.AddScoped<ICreateProduct, CreateProduct>();
     }
 
     private static void RegistryDomainServices(WebApplicationBuilder builder)

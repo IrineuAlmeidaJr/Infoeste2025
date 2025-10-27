@@ -1,39 +1,24 @@
-﻿using Application.DTO;
-using Application.DTO.Product;
+﻿using Application.DTO.Product;
 using Application.DTOs;
 using Application.DTOs.Product;
 using Application.Mapper;
-using Domain.Entities;
+using Application.UseCases.Brands;
 using Domain.Exception;
 using Domain.Repository;
 
 namespace Application.Services;
 
 public class ProductService(
+    ICreateProduct createProduct,
+
+
     IProductRepository productRepository,
-    IBrandRepository brandRepository,
-    ICategoryRepository categoryRepository,
     ICacheRepository cache,
     IProductMapper mapper) : IProductService
 {
     public async Task<ProductResponseDto> Create(ProductCreateDto productCreateDto)
     {
-        var brand = await brandRepository.GetById(productCreateDto.BrandId)
-            ?? throw new NotFoundException("Marca não encontrada");
-
-        var categories = new List<Category>();
-        foreach (var categoryId in productCreateDto.CategoryIds)
-        {
-            var category = await categoryRepository.GetById(categoryId);
-            if (category != null)
-                categories.Add(category);
-        }
-
-        var product = mapper.FromProductCreateDto(productCreateDto, brand, categories);
-
-        var createdProduct = await productRepository.Create(product);
-
-        return mapper.ToProductResponseDto(createdProduct);
+        return await createProduct.Execute(productCreateDto);
     }
 
     public async Task<ProductResponseDto> Update(long id, ProductUpdateDto productUpdateDto)
