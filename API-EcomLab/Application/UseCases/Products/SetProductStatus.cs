@@ -3,9 +3,9 @@ using Domain.Repository;
 
 namespace Application.UseCases.Products;
 
-public class RemoveProduct(
+public class SetProductStatus(
     IProductRepository repository,
-    ICacheRepository cache) : IRemoveProduct
+    ICacheRepository cache) : ISetProductStatus
 {
     public async Task Execute(long id)
     {

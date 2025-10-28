@@ -18,21 +18,21 @@ public class ProductsController(IProductService service) : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult<ProductResponseDto>> Put(long id, [FromBody] ProductUpdateDto request)
+    public async Task<ActionResult<ProductResponseDto>> Put([FromQuery] long id, [FromBody] ProductUpdateDto request)
     {
         var response = await service.Update(id, request);
         return Ok(response);
     }
 
-    [HttpDelete("{id:int}")]
-    public async Task<ActionResult> Delete(int id)
+    [HttpPatch("{id:long}")]
+    public async Task<ActionResult> SetProductStatus([FromRoute] long id, [FromQuery] bool isActive)
     {
-        await service.Remove(id);
+        await service.SetProductStatus(id, isActive);
         return NoContent();
     }
 
-    [HttpGet("{id:int}", Name = "GetProduct")]
-    public async Task<ActionResult<ProductResponseDto>> GetProduct(int id)
+    [HttpGet("{id:long}", Name = "GetProduct")]
+    public async Task<ActionResult<ProductResponseDto>> GetProduct([FromRoute] long id)
     {
         var response = await service.GetById(id);
         return Ok(response);

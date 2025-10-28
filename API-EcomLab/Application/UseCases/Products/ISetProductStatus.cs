@@ -1,6 +1,6 @@
 ﻿namespace Application.UseCases.Products;
 
-public interface IRemoveProduct
+public interface ISetProductStatus
 {
     Task Execute(long id);
 }

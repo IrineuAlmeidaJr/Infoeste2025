@@ -4,6 +4,7 @@ using Application.UseCases.Brands;
 using Application.UseCases.Categories;
 using Application.UseCases.Products;
 using Domain.Repository;
+using Infrastructure.Configuration.Kafka;
 using Infrastructure.Configurations;
 using Infrastructure.Configurations.Redis;
 using Infrastructure.Context;
@@ -86,7 +87,7 @@ public class Program
         // - Product
         builder.Services.AddScoped<ICreateProduct, CreateProduct>();
         builder.Services.AddScoped<IUpdateProduct, UpdateProduct>();
-        builder.Services.AddScoped<IRemoveProduct, RemoveProduct>();
+        builder.Services.AddScoped<ISetProductStatus, SetProductStatus>();
         builder.Services.AddScoped<IGetProductResponseDtoById, GetProductResponseDtoById>();
         builder.Services.AddScoped<IGetProductsPaged, GetProductsPaged>();
     }

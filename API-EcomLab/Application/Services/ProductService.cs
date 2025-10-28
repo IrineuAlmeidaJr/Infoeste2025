@@ -9,7 +9,7 @@ namespace Application.Services;
 public class ProductService(
     ICreateProduct createProduct,
     IUpdateProduct updateProduct,
-    IRemoveProduct removeProduct,
+    ISetProductStatus setProductStatus,
     IGetProductResponseDtoById getProductResponseDtoById,
     IGetProductsPaged getProductsPaged) : IProductService
 {
@@ -23,9 +23,9 @@ public class ProductService(
         return await updateProduct.Execute(id, productUpdateDto);
     }
 
-    public async Task Remove(long id)
+    public async Task SetProductStatus(long id, bool isActive)
     {
-        await removeProduct.Execute(id);
+        await setProductStatus.Execute(id);
     }
 
     public async Task<ProductResponseDto> GetById(long id)
