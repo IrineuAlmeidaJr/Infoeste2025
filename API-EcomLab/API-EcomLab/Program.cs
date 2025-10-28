@@ -1,5 +1,8 @@
 using Application.Mapper;
 using Application.Services;
+using Application.UseCases.Brands;
+using Application.UseCases.Categories;
+using Application.UseCases.Products;
 using Domain.Repository;
 using Infrastructure.Configuration.Kafka;
 using Infrastructure.Configurations;
@@ -52,7 +55,6 @@ public class Program
     private static void ExecuteInitializationServices(WebApplication app)
     {
         app.Services.GetRequiredService<IRedisContext>();
-        app.Services.GetRequiredService<IKafkaContext>();
     }
 
     private static void RegistryApplicationServices(WebApplicationBuilder builder)
@@ -67,7 +69,27 @@ public class Program
         builder.Services.AddScoped<IBrandService, BrandService>();
         builder.Services.AddScoped<IProductService, ProductService>();
 
-        // use cases
+        // UseCases
+        // - Brand
+        builder.Services.AddScoped<ICreateBrand, CreateBrand>();
+        builder.Services.AddScoped<IUpdateBrand, UpdateBrand>();
+        builder.Services.AddScoped<IRemoveBrand, RemoveBrand>();
+        builder.Services.AddScoped<IGetBrandDtoById, GetBrandDtoById>();
+        builder.Services.AddScoped<IGetBrandById, GetBrandById>();
+        builder.Services.AddScoped<IGetBrandsPaged, GetBrandsPaged>();
+        // - Category
+        builder.Services.AddScoped<ICreateCategory, CreateCategory>();
+        builder.Services.AddScoped<IUpdateCategory, UpdateCategory>();
+        builder.Services.AddScoped<IRemoveCategory, RemoveCategory>();
+        builder.Services.AddScoped<IGetCategoryDtoById, GetCategoryDtoById>();
+        builder.Services.AddScoped<IGetCategoryById, GetCategoryById>();
+        builder.Services.AddScoped<IGetCategoriesPaged, GetCategoriesPaged>();
+        // - Product
+        builder.Services.AddScoped<ICreateProduct, CreateProduct>();
+        builder.Services.AddScoped<IUpdateProduct, UpdateProduct>();
+        builder.Services.AddScoped<ISetProductStatus, SetProductStatus>();
+        builder.Services.AddScoped<IGetProductResponseDtoById, GetProductResponseDtoById>();
+        builder.Services.AddScoped<IGetProductsPaged, GetProductsPaged>();
     }
 
     private static void RegistryDomainServices(WebApplicationBuilder builder)
@@ -87,8 +109,6 @@ public class Program
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 42))));
         builder.Services.AddSingleton<IRedisContext, RedisContext>();
-
-        builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
 
         // Repositories  
         builder.Services.AddSingleton<ICacheRepository, CacheRepository>();
