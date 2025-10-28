@@ -8,6 +8,7 @@ public interface IElasticProduct
 {
     Task Create(Product product);
     Task Update(Product product);
+    Task<Product?> GetProductById(Guid id);
     Task<Product?> GetProductByProductId(long productId);
     Task<ISearchResponse<Product>> SearchCampaignsAsync(ProductQueryDto productQueryDto);
 }

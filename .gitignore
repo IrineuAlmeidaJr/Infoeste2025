@@ -9,6 +9,7 @@
 
 # Visual Studio cache and config
 .vs/
+**/.vs/
 
 # Build results
 [Dd]ebug/

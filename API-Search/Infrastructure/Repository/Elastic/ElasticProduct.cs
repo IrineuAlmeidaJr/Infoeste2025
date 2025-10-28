@@ -57,6 +57,27 @@ public class ElasticProduct(
             throw new Exception($"Erro ao editar produto no Elasticsearch: {response.ServerError?.Error.Reason}");
     }
 
+    public async Task<Product?> GetProductById(Guid id)
+    {
+        var response = await elasticContext.Get()
+            .SearchAsync<Product>(s => s
+                .Index(IndexName)
+                .Query(q => q
+                    .Term(t => t
+                        .Field(f => f.Id)
+                        .Value(id) 
+                    )
+                )
+                .Size(1)
+            );
+
+        if (!response.IsValid || !response.Documents.Any())
+            return null;
+
+        return response.Documents.First();
+    }
+
+
     public async Task<Product?> GetProductByProductId(long productId)
     {
         var response = await elasticContext.Get()
@@ -108,23 +129,60 @@ public class ElasticProduct(
             Value = true
         });
 
-        // Filtro por nome (se fornecido)
+        // Filtro por nome 
         if (!string.IsNullOrWhiteSpace(productQueryDto.Name))
         {
-            mustQueries.Add(new MatchQuery
+            var nameQuery = new BoolQuery
             {
-                Field = Infer.Field<Product>(product => product.Name),
-                Query = productQueryDto.Name
-            });
+                Should = new List<QueryContainer>
+                {
+                    // Busca exata ou fuzzy no nome
+                    new MatchQuery
+                    {
+                        Field = Infer.Field<Product>(p => p.Name),
+                        Query = productQueryDto.Name,
+                        Fuzziness = Fuzziness.Auto,
+                        Boost = 3
+                    },
+                    // Edge n-gram (autocomplete)
+                    new MatchQuery
+                    {
+                        Field = Infer.Field<Product>(p => p.Name.Suffix("edge")),
+                        Query = productQueryDto.Name,
+                        Boost = 2
+                    },
+                    // Phonetic
+                    new MatchQuery
+                    {
+                        Field = Infer.Field<Product>(p => p.Name.Suffix("phonetic")),
+                        Query = productQueryDto.Name
+                    },
+                    // Nowhitespaces
+                    new MatchQuery
+                    {
+                        Field = Infer.Field<Product>(p => p.Name.Suffix("nowhitespaces")),
+                        Query = productQueryDto.Name
+                    },
+                    // Chaordic
+                    new MatchQuery
+                    {
+                        Field = Infer.Field<Product>(p => p.Name.Suffix("chaordic")),
+                        Query = productQueryDto.Name
+                    }
+                },
+                MinimumShouldMatch = 1
+            };
+
+            mustQueries.Add(nameQuery);
         }
 
         // Filtro por produto em promoção
-        if (productQueryDto.IsOnSale.HasValue)
+        if (productQueryDto.IsOnSale == true)
         {
             mustQueries.Add(new TermQuery
             {
                 Field = Infer.Field<Product>(product => product.IsOnSale),
-                Value = productQueryDto.IsOnSale.Value
+                Value = true
             });
         }
 
@@ -157,7 +215,7 @@ public class ElasticProduct(
         if (string.IsNullOrWhiteSpace(orderBy))
             return sort;
 
-        var isAsc = direction == SortDirection.Asc;
+        var isAsc = direction == SortDirection.asc;
 
         return orderBy.ToLower() switch
         {

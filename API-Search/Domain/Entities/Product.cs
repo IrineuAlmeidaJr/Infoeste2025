@@ -11,6 +11,7 @@ public sealed class Product
     public bool InStock { get; set; }
     public decimal BasePrice { get; set; }
     public decimal SalePrice { get; set; }
+    public decimal Price { get; set; }
     public bool IsOnSale { get; set; }
     public DateTime OnSaleEnd { get; set; }
     public DateTime CreatedAt { get; set; }
