@@ -1,5 +1,6 @@
 ﻿using Application.DTO.Product;
 using Application.DTOs.Product;
+using Application.Event;
 using Application.Mapper;
 using Domain.Exception;
 using Domain.Repository;
@@ -9,6 +10,7 @@ namespace Application.UseCases.Products;
 public class UpdateProduct(
     IProductRepository repository,
     ICacheRepository cache,
+    IUpdateProductEventPublisher publisher,
     IProductMapper mapper) : IUpdateProduct
 {
     public async Task<ProductResponseDto> Execute(long id, ProductUpdateDto productUpdateDto)
@@ -23,6 +25,9 @@ public class UpdateProduct(
         product.Update(productUpdateDto.Name, productUpdateDto.Description, productUpdateDto.Ean,
             productUpdateDto.Sku, productUpdateDto.Stock, productUpdateDto.BasePrice, productUpdateDto.ImageUrl);
         var updatedProduct = await repository.Update(product);
+
+        var productEvent = mapper.ToKafkaEvent(updatedProduct, "UpdateProduct");
+        await publisher.PublishAsync(productEvent);
 
         var cacheKey = $"product-{id}";
         await cache.RemoveCache(cacheKey);
