@@ -34,7 +34,25 @@ public class Program
 
         builder.Host.UseSerilog();
 
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+        }
+
         var app = builder.Build();
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseCors("AllowLocalhost");
+        }
 
         app.UseSwagger();
         app.UseSwaggerUI();
