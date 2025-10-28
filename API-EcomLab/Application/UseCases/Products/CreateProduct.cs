@@ -1,5 +1,6 @@
 ﻿using Application.DTO.Product;
 using Application.DTOs.Product;
+using Application.Event;
 using Application.Mapper;
 using Application.UseCases.Brands;
 using Application.UseCases.Categories;
@@ -13,6 +14,7 @@ public class CreateProduct(
     IGetBrandById getBrandById,
     IGetCategoryById getCategoryById,
     IProductRepository repository,
+    ICreateProductEventPublisher publisher,
     IProductMapper mapper) : ICreateProduct
 {
     public async Task<ProductResponseDto> Execute(ProductCreateDto productCreateDto)
@@ -31,6 +33,9 @@ public class CreateProduct(
         var product = mapper.FromProductCreateDto(productCreateDto, brand, categories);
 
         var createdProduct = await repository.Create(product);
+
+        var productEvent = mapper.ToKafkaEvent(createdProduct, "CreateProduct");
+        await publisher.PublishAsync(productEvent);
 
         return mapper.ToProductResponseDto(createdProduct);
     }

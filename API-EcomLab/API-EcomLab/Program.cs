@@ -1,3 +1,4 @@
+using Application.Event;
 using Application.Mapper;
 using Application.Services;
 using Application.UseCases.Brands;
@@ -11,6 +12,7 @@ using Infrastructure.Context;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Redis;
 using Microsoft.EntityFrameworkCore;
+using Outgoing.Messaging;
 using Serilog;
 
 public class Program
@@ -55,6 +57,7 @@ public class Program
     private static void ExecuteInitializationServices(WebApplication app)
     {
         app.Services.GetRequiredService<IRedisContext>();
+        app.Services.GetRequiredService<IKafkaContext>();
     }
 
     private static void RegistryApplicationServices(WebApplicationBuilder builder)
@@ -109,6 +112,7 @@ public class Program
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 42))));
         builder.Services.AddSingleton<IRedisContext, RedisContext>();
+        builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
 
         // Repositories  
         builder.Services.AddSingleton<ICacheRepository, CacheRepository>();
@@ -120,6 +124,7 @@ public class Program
     private static void RegistryOutgoingServices(WebApplicationBuilder builder)
     {
         // Messaging  
-
+        builder.Services.AddSingleton<ICreateProductEventPublisher, CreateProductKafkaPublisher>();
+        builder.Services.AddSingleton<IUpdateProductEventPublisher, UpdateProductKafkaPublisher>();
     }
 }
