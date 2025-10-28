@@ -1,5 +1,9 @@
+using Application.Event;
 using Application.Mapper;
 using Application.Services;
+using Application.UseCases.Brands;
+using Application.UseCases.Categories;
+using Application.UseCases.Products;
 using Domain.Repository;
 using Infrastructure.Configuration.Kafka;
 using Infrastructure.Configurations;
@@ -8,6 +12,7 @@ using Infrastructure.Context;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Redis;
 using Microsoft.EntityFrameworkCore;
+using Outgoing.Messaging;
 using Serilog;
 
 public class Program
@@ -67,7 +72,27 @@ public class Program
         builder.Services.AddScoped<IBrandService, BrandService>();
         builder.Services.AddScoped<IProductService, ProductService>();
 
-        // use cases
+        // UseCases
+        // - Brand
+        builder.Services.AddScoped<ICreateBrand, CreateBrand>();
+        builder.Services.AddScoped<IUpdateBrand, UpdateBrand>();
+        builder.Services.AddScoped<IRemoveBrand, RemoveBrand>();
+        builder.Services.AddScoped<IGetBrandDtoById, GetBrandDtoById>();
+        builder.Services.AddScoped<IGetBrandById, GetBrandById>();
+        builder.Services.AddScoped<IGetBrandsPaged, GetBrandsPaged>();
+        // - Category
+        builder.Services.AddScoped<ICreateCategory, CreateCategory>();
+        builder.Services.AddScoped<IUpdateCategory, UpdateCategory>();
+        builder.Services.AddScoped<IRemoveCategory, RemoveCategory>();
+        builder.Services.AddScoped<IGetCategoryDtoById, GetCategoryDtoById>();
+        builder.Services.AddScoped<IGetCategoryById, GetCategoryById>();
+        builder.Services.AddScoped<IGetCategoriesPaged, GetCategoriesPaged>();
+        // - Product
+        builder.Services.AddScoped<ICreateProduct, CreateProduct>();
+        builder.Services.AddScoped<IUpdateProduct, UpdateProduct>();
+        builder.Services.AddScoped<ISetProductStatus, SetProductStatus>();
+        builder.Services.AddScoped<IGetProductResponseDtoById, GetProductResponseDtoById>();
+        builder.Services.AddScoped<IGetProductsPaged, GetProductsPaged>();
     }
 
     private static void RegistryDomainServices(WebApplicationBuilder builder)
@@ -87,7 +112,6 @@ public class Program
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 42))));
         builder.Services.AddSingleton<IRedisContext, RedisContext>();
-
         builder.Services.AddSingleton<IKafkaContext, KafkaContext>();
 
         // Repositories  
@@ -100,6 +124,7 @@ public class Program
     private static void RegistryOutgoingServices(WebApplicationBuilder builder)
     {
         // Messaging  
-
+        builder.Services.AddSingleton<ICreateProductEventPublisher, CreateProductKafkaPublisher>();
+        builder.Services.AddSingleton<IUpdateProductEventPublisher, UpdateProductKafkaPublisher>();
     }
 }

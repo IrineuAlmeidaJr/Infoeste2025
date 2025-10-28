@@ -7,9 +7,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
-# Application settings (local secrets)
-appsettings*.json
-
 # Visual Studio cache and config
 .vs/
 **/.vs/
