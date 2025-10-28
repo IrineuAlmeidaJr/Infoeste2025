@@ -52,7 +52,7 @@ O repositório contém **dois projetos em .NET**:
 
 ---
 
-## 🚀 Fluxo de Integração
+## 🚀 Fluxo
 
 ![Fluxo da aplicação](https://raw.githubusercontent.com/IrineuAlmeidaJr/Infoeste2025/main/fluxo.png)
 
