@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "29983643-7e29-41fa-b50c-50b09fbca734",
+		"name": "API-EcomLab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44270311",
+		"_collection_link": "https://irineudealmeidajunior.postman.co/workspace/Irineu-de-Almeida-Junior's-Work~92f2f1ad-e642-4008-88f9-c7dcb06b549b/collection/44270311-29983643-7e29-41fa-b50c-50b09fbca734?action=share&source=collection_link&creator=44270311"
+	},
+	"item": [
+		{
+			"name": "Indexs Criados",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "u8Tlb2bh0EKrp3SCh_I1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "elastic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.0.0.1:9200/_cat/indices?v",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Index",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "u8Tlb2bh0EKrp3SCh_I1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "elastic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"settings\": {\r\n    \"index\": {\r\n      \"number_of_shards\": 3,\r\n      \"number_of_replicas\": 1,\r\n      \"routing\": {\r\n        \"allocation\": {\r\n          \"include\": {\r\n            \"_tier_preference\": \"data_content\"\r\n          }\r\n        }\r\n      },\r\n      \"similarity\": {\r\n        \"constant_similarity\": {\r\n          \"type\": \"scripted\",\r\n          \"script\": {\r\n            \"source\": \"return query.boost;\"\r\n          }\r\n        }\r\n      },\r\n      \"analysis\": {\r\n        \"filter\": {\r\n          \"stopwords_filter\": {\r\n            \"type\": \"stop\",\r\n            \"ignore_case\": true,\r\n            \"remove_trailing\": true,\r\n            \"stopwords\": [\r\n              \"a\",\r\n              \"ainda\",\r\n              \"alem\",\r\n              \"ambas\",\r\n              \"ambos\",\r\n              \"antes\",\r\n              \"ao\",\r\n              \"aonde\",\r\n              \"aos\",\r\n              \"apos\",\r\n              \"aquele\",\r\n              \"aqueles\",\r\n              \"as\",\r\n              \"assim\",\r\n              \"com\",\r\n              \"como\",\r\n              \"contra\",\r\n              \"contudo\",\r\n              \"cuja\",\r\n              \"cujas\",\r\n              \"cujo\",\r\n              \"cujos\",\r\n              \"da\",\r\n              \"das\",\r\n              \"de\",\r\n              \"dela\",\r\n              \"dele\",\r\n              \"deles\",\r\n              \"demais\",\r\n              \"depois\",\r\n              \"desde\",\r\n              \"desta\",\r\n              \"deste\",\r\n              \"dispoe\",\r\n              \"dispoem\",\r\n              \"diversa\",\r\n              \"diversas\",\r\n              \"diversos\",\r\n              \"do\",\r\n              \"dos\",\r\n              \"durante\",\r\n              \"e\",\r\n              \"é\",\r\n              \"em\",\r\n              \"entao\",\r\n              \"entre\",\r\n              \"essa\",\r\n              \"essas\",\r\n              \"esse\",\r\n              \"esses\",\r\n              \"esta\",\r\n              \"estas\",\r\n              \"este\",\r\n              \"estes\",\r\n              \"ha\",\r\n              \"isso\",\r\n              \"isto\",\r\n              \"logo\",\r\n              \"mais\",\r\n              \"mas\",\r\n              \"mediante\",\r\n              \"menos\",\r\n              \"mesma\",\r\n              \"mesmas\",\r\n              \"mesmo\",\r\n              \"mesmos\",\r\n              \"na\",\r\n              \"nao\",\r\n              \"nas\",\r\n              \"nem\",\r\n              \"nesse\",\r\n              \"neste\",\r\n              \"nos\",\r\n              \"o\",\r\n              \"os\",\r\n              \"ou\",\r\n              \"outra\",\r\n              \"outras\",\r\n              \"outro\",\r\n              \"outros\",\r\n              \"pelas\",\r\n              \"pelo\",\r\n              \"pelos\",\r\n              \"perante\",\r\n              \"pois\",\r\n              \"por\",\r\n              \"porque\",\r\n              \"portanto\",\r\n              \"propios\",\r\n              \"proprio\",\r\n              \"quais\",\r\n              \"qual\",\r\n              \"qualquer\",\r\n              \"quando\",\r\n              \"quanto\",\r\n              \"que\",\r\n              \"quem\",\r\n              \"quer\",\r\n              \"se\",\r\n              \"seja\",\r\n              \"sem\",\r\n              \"sendo\",\r\n              \"seu\",\r\n              \"seus\",\r\n              \"sob\",\r\n              \"sobre\",\r\n              \"sua\",\r\n              \"suas\",\r\n              \"tal\",\r\n              \"tambem\",\r\n              \"teu\",\r\n              \"teus\",\r\n              \"toda\",\r\n              \"todas\",\r\n              \"todo\",\r\n              \"todos\",\r\n              \"tua\",\r\n              \"tuas\",\r\n              \"tudo\",\r\n              \"um\",\r\n              \"uma\",\r\n              \"umas\",\r\n              \"uns\"\r\n            ]\r\n          },\r\n          \"phonetic_filter\": {\r\n            \"type\": \"phonetic\",\r\n            \"encoder\": \"soundex\",\r\n            \"rule_type\": \"exact\",\r\n            \"max_code_len\": 8,\r\n            \"replace\": true\r\n          },\r\n          \"clientexclusion_filter\": {\r\n            \"type\": \"keyword_marker\",\r\n            \"keywords\": [],\r\n            \"ignore_case\": true\r\n          },\r\n          \"whitespaceremove_filter\": {\r\n            \"type\": \"pattern_replace\",\r\n            \"pattern\": \" \",\r\n            \"replacement\": \"\"\r\n          },\r\n          \"whitespacereplaceall_filter\": {\r\n            \"type\": \"pattern_replace\",\r\n            \"pattern\": \"\\\\s+\",\r\n            \"replacement\": \"-\"\r\n          },\r\n          \"specialreplace_filter\": {\r\n            \"type\": \"pattern_replace\",\r\n            \"pattern\": \"\\\\.|:|&|#|,|/|\\\\*|\\\\+|%|\\\\|\",\r\n            \"replacement\": \"-\"\r\n          },\r\n          \"stemmer_filter\": {\r\n            \"type\": \"stemmer\",\r\n            \"language\": \"brazilian\"\r\n          },\r\n          \"user_synonym\": {\r\n            \"type\": \"synonym_graph\",\r\n            \"expand\": true,\r\n            \"lenient\": true,\r\n            \"synonyms\": [\r\n              \"blue,azul\",\r\n              \"geladeira,refrigerador,freezer,congelador\",\r\n              \"green,verde\",\r\n              \"maillot,maio\",\r\n              \"orange,laranja\",\r\n              \"ouro,gold\",\r\n              \"pink,rosa\",\r\n              \"purple,roxo\",\r\n              \"tv,teve,televisão,televisor\",\r\n              \"white,branco\",\r\n              \"yellow,amarelo\"\r\n            ],\r\n            \"tokenizer\": \"standard\"\r\n          }\r\n        },\r\n        \"analyzer\": {\r\n          \"simple_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"asciifolding\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\"\r\n            ]\r\n          },\r\n          \"simple_analyzer_search\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"asciifolding\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\",\r\n              \"user_synonym\"\r\n            ]\r\n          },\r\n          \"phonetic_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\",\r\n              \"phonetic_filter\",\r\n              \"stemmer_filter\"\r\n            ]\r\n          },\r\n          \"phonetic_search_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\",\r\n              \"phonetic_filter\",\r\n              \"stemmer_filter\"\r\n            ]\r\n          },\r\n          \"synonym_search_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"user_synonym\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\"\r\n            ]\r\n          },\r\n          \"name_edge_ngram_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"edge_ngram_tokenizer\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"asciifolding\"\r\n            ]\r\n          },\r\n          \"chaordicfilter_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"keyword\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"asciifolding\",\r\n              \"specialreplace_filter\",\r\n              \"whitespacereplaceall_filter\",\r\n              \"trim\"\r\n            ]\r\n          },\r\n          \"nowhitespaces_analyzer\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"asciifolding\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\",\r\n              \"whitespaceremove_filter\"\r\n            ]\r\n          },\r\n          \"nowhitespaces_analyzer_search\": {\r\n            \"type\": \"custom\",\r\n            \"tokenizer\": \"standard\",\r\n            \"filter\": [\r\n              \"lowercase\",\r\n              \"user_synonym\",\r\n              \"asciifolding\",\r\n              \"trim\",\r\n              \"clientexclusion_filter\",\r\n              \"stopwords_filter\",\r\n              \"whitespaceremove_filter\"\r\n            ]\r\n          }\r\n        },\r\n        \"tokenizer\": {\r\n          \"edge_ngram_tokenizer\": {\r\n            \"type\": \"edge_ngram\",\r\n            \"min_gram\": 3,\r\n            \"max_gram\": 20,\r\n            \"token_chars\": [\r\n              \"letter\"\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"mappings\": {\r\n    \"properties\": {\r\n      \"id\": {\r\n        \"type\": \"keyword\"\r\n      },\r\n      \"productId\": {\r\n        \"type\": \"long\"\r\n      },\r\n      \"name\": {\r\n        \"type\": \"text\",\r\n        \"fields\": {\r\n          \"chaordic\": {\r\n            \"type\": \"text\",\r\n            \"analyzer\": \"chaordicfilter_analyzer\",\r\n            \"similarity\": \"constant_similarity\",\r\n            \"fielddata\": true\r\n          },\r\n          \"nowhitespaces\": {\r\n            \"type\": \"text\",\r\n            \"analyzer\": \"nowhitespaces_analyzer\",\r\n            \"search_analyzer\": \"nowhitespaces_analyzer_search\",\r\n            \"similarity\": \"constant_similarity\"\r\n          },\r\n          \"original\": {\r\n            \"type\": \"keyword\",\r\n            \"similarity\": \"constant_similarity\"\r\n          },\r\n          \"phonetic\": {\r\n            \"type\": \"text\",\r\n            \"analyzer\": \"phonetic_analyzer\",\r\n            \"search_analyzer\": \"phonetic_search_analyzer\",\r\n            \"similarity\": \"constant_similarity\"\r\n          },\r\n          \"edge\": {\r\n            \"type\": \"text\",\r\n            \"analyzer\": \"name_edge_ngram_analyzer\",\r\n            \"search_analyzer\": \"standard\"\r\n          }\r\n        }\r\n      },\r\n      \"description\": {\r\n        \"type\": \"text\",\r\n        \"analyzer\": \"simple_analyzer\"\r\n      },\r\n      \"ean\": {\r\n        \"type\": \"keyword\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"keyword\"\r\n      },\r\n      \"inStock\": {\r\n        \"type\": \"boolean\"\r\n      },\r\n      \"basePrice\": {\r\n        \"type\": \"double\"\r\n      },\r\n      \"salePrice\": {\r\n        \"type\": \"double\"\r\n      },\r\n      \"price\": {\r\n        \"type\": \"double\"\r\n      },\r\n      \"isOnSale\": {\r\n        \"type\": \"boolean\"\r\n      },\r\n      \"onSaleEnd\": {\r\n        \"type\": \"date\"\r\n      },\r\n      \"createdAt\": {\r\n        \"type\": \"date\"\r\n      },\r\n      \"updatedAt\": {\r\n        \"type\": \"date\"\r\n      },\r\n      \"imageUrl\": {\r\n        \"type\": \"keyword\"\r\n      },\r\n      \"brand\": {\r\n        \"type\": \"text\",\r\n        \"fields\": {\r\n          \"original\": {\r\n            \"type\": \"keyword\"\r\n          }\r\n        }\r\n      },\r\n      \"categories\": {\r\n        \"type\": \"text\",\r\n        \"fields\": {\r\n          \"original\": {\r\n            \"type\": \"keyword\"\r\n          }\r\n        }\r\n      },\r\n      \"isActive\": {\r\n        \"type\": \"boolean\"\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.0.0.1:9200/product-infoeste-irineu",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9200",
+					"path": [
+						"product-infoeste-irineu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/product-infoeste-irineu/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"product-infoeste-irineu",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir Um",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "u8Tlb2bh0EKrp3SCh_I1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "elastic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"a1b2c3d4-5678-90ab-cdef-1234567890b4\",\r\n  \"productId\": 1010,\r\n  \"name\": \"Ventilador de Coluna Brastemp 40cm - BVC40\",\r\n  \"description\": \"Ventilador de coluna com 3 velocidades, oscilação horizontal e inclinável.\",\r\n  \"ean\": \"7896008800009\",\r\n  \"sku\": \"BVC40\",\r\n  \"inStock\": true,\r\n  \"basePrice\": 299.00,\r\n  \"salePrice\": 269.00,\r\n  \"price\": 269.00,\r\n  \"isOnSale\": true,\r\n  \"onSaleEnd\": \"2025-12-31T23:59:59Z\",\r\n  \"createdAt\": \"2025-10-20T16:30:00Z\",\r\n  \"updatedAt\": \"2025-10-22T21:45:00Z\",\r\n  \"imageUrl\": \"https://www.brastemp.com.br/ventilador-de-coluna-brastemp-40cm-bvc40/p\",\r\n  \"brand\": \"Brastemp\",\r\n  \"categories\": [\"Eletrodomésticos\", \"Climatização\", \"Ventiladores\"],\r\n  \"isActive\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.0.0.1:9200/product-infoeste-irineu/_doc",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9200",
+					"path": [
+						"product-infoeste-irineu",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir Varios",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "u8Tlb2bh0EKrp3SCh_I1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "elastic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"a1b2c3d4-5678-90ab-cdef-1234567890b4\",\r\n  \"productId\": 1010,\r\n  \"name\": \"Ventilador de Coluna Brastemp 40cm - BVC40\",\r\n  \"description\": \"Ventilador de coluna com 3 velocidades, oscilação horizontal e inclinável.\",\r\n  \"ean\": \"7896008800009\",\r\n  \"sku\": \"BVC40\",\r\n  \"inStock\": true,\r\n  \"basePrice\": 299.00,\r\n  \"salePrice\": 269.00,\r\n  \"price\": 269.00,\r\n  \"isOnSale\": true,\r\n  \"onSaleEnd\": \"2025-12-31T23:59:59Z\",\r\n  \"createdAt\": \"2025-10-20T16:30:00Z\",\r\n  \"updatedAt\": \"2025-10-22T21:45:00Z\",\r\n  \"imageUrl\": \"https://www.brastemp.com.br/ventilador-de-coluna-brastemp-40cm-bvc40/p\",\r\n  \"brand\": \"Brastemp\",\r\n  \"categories\": [\"Eletrodomésticos\", \"Climatização\", \"Ventiladores\"],\r\n  \"isActive\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.0.0.1:9200/product-infoeste-irineu/_doc",
+					"protocol": "http",
+					"host": [
+						"10",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9200",
+					"path": [
+						"product-infoeste-irineu",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
