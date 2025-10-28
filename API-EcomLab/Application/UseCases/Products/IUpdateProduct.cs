@@ -3,7 +3,7 @@ using Application.DTOs.Product;
 
 namespace Application.UseCases.Products;
 
-public interface ICreateProduct
+public interface IUpdateProduct
 {
-    Task<ProductResponseDto> Execute(ProductCreateDto brandDto);
+    Task<ProductResponseDto> Execute(long id, ProductUpdateDto categoryDto);
 }

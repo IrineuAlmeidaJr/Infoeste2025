@@ -1,12 +1,13 @@
 ﻿using Application.DTO.Product;
 using Application.DTOs.Product;
 using Application.Mapper;
+using Application.UseCases.Brands;
 using Application.UseCases.Categories;
 using Domain.Entities;
 using Domain.Exception;
 using Domain.Repository;
 
-namespace Application.UseCases.Brands;
+namespace Application.UseCases.Products;
 
 public class CreateProduct(
     IGetBrandById getBrandById,
