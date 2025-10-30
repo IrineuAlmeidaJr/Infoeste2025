@@ -7,6 +7,8 @@ O projeto demonstra a integração entre **microserviços .NET**, **mensageria**
 
 ## 🏗️ Estrutura do Projeto
 
+https://miro.com/welcomeonboard/Q3VBdmQybWxSbEJzK2Q2Y1NwNTE3T0hDN2ZzUHArYU1oUmE4RFVLbmlyZXNGQ2RVMllZY1VIc1BVamVLckw4UUdpZWQwcHhsYVpvS2JoYkZWaVkzdmlTZkRnZUhOM3UyVFFUUXhFc1h4Z1ovb0QzRDBKV1dkYzBkVm0yRkEvUnVzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=688778382154
+
 O repositório contém **dois projetos em .NET**:
 
 ### 1️⃣ api-ecomlab
