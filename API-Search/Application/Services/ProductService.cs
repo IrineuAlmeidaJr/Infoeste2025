@@ -21,9 +21,11 @@ public class ProductService(
         await repository.Create(product);
     }
 
-    public Task Update(KafkaEvent<Product> productEvent)
+    public async Task Update(KafkaEvent<Product> productEvent)
     {
-        throw new NotImplementedException();
+        var product = mapper.FromKafkaProductEvent(productEvent);
+
+        await repository.Update(product);
     }
 
     public async Task<ProductResponseDto> GetById(Guid id)
