@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Incoming.Messaging;
 
-public class ProductKafkaListener(
+public class UpdateProductKafkaListener(
     IKafkaContext context,
     IConfiguration configuration,
     IProductService productService,
-    ILogger<ProductKafkaListener> logger) 
+    ILogger<UpdateProductKafkaListener> logger) 
     : 
     KafkaBaseConsumer<Ignore, KafkaEvent<Product>>(
         context,
@@ -24,11 +24,11 @@ public class ProductKafkaListener(
 
     protected override async Task HandleMessage(Message<Ignore, KafkaEvent<Product>> message)
     {
-        logger.LogInformation($"[{DateTime.UtcNow}][ProductKafkaListener] Inicialicou de atualização do Status");
+        logger.LogInformation($"[{DateTime.UtcNow}][UpdateProductKafkaListener] Inicialicou de atualização do produto");
 
         var value = message.Value;
-        await productService.Create(value);
+        await productService.Update(value);
        
-        logger.LogInformation($"[{DateTime.UtcNow}][ProductKafkaListener] Finalizou de atualização do Status");
+        logger.LogInformation($"[{DateTime.UtcNow}][UpdateProductKafkaListener] Finalizou de atualização do produto");
     }
 }

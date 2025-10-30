@@ -90,7 +90,8 @@ public class Program
 
     private static void RegistryIncomingServices(WebApplicationBuilder builder)
     {
-        builder.Services.AddHostedService<ProductKafkaListener>();
+        builder.Services.AddHostedService<CreateProductKafkaListener>();
+        builder.Services.AddHostedService<UpdateProductKafkaListener>();
     }
 
     private static void RegistryInfrastructureServices(WebApplicationBuilder builder)
