@@ -35,7 +35,15 @@ public class CreateProduct(
         var createdProduct = await repository.Create(product);
 
         var productEvent = mapper.ToKafkaEvent(createdProduct, "CreateProduct");
-        await publisher.PublishAsync(productEvent);
+        try
+        {
+            await publisher.PublishAsync(productEvent);
+        }
+        catch (Exception)
+        {
+            await repository.Remove(product.Id);
+            throw;
+        }
 
         return mapper.ToProductResponseDto(createdProduct);
     }

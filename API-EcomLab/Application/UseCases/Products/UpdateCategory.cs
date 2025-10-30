@@ -26,8 +26,16 @@ public class UpdateProduct(
             productUpdateDto.Sku, productUpdateDto.Stock, productUpdateDto.BasePrice, productUpdateDto.ImageUrl);
         var updatedProduct = await repository.Update(product);
 
-        var productEvent = mapper.ToKafkaEvent(updatedProduct, "UpdateProduct");
-        await publisher.PublishAsync(productEvent);
+        var productEvent = mapper.ToKafkaEvent(updatedProduct, "UpdateProduct");  
+        try
+        {
+            await publisher.PublishAsync(productEvent);
+        }
+        catch (Exception)
+        {
+            await repository.Remove(product.Id);
+            throw;
+        }
 
         var cacheKey = $"product-{id}";
         await cache.RemoveCache(cacheKey);
